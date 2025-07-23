@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akankshya Landing Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-white text-black font-sans">
+
+    <header class="flex justify-between items-center px-8 py-5 bg-black">
+    <h1 class="text-2xl text-blue-500 font-bold">Akankshya</h1>
+  <nav>
+      <ul class="flex space-x-6 text-white">
+        <li><a href="#" class="hover:text-blue-400">Home</a></li>
+        <li><a href="#" class="hover:text-blue-400">Info</a></li>
+        </ul>
+      </nav>
+    </header>
+   
+<section class="flex flex-col md:flex-row items-center justify-center mt-20 px-6 gap-10">
+
+    <div class="w-48 h-48 rounded-full border-4 border-blue-500 overflow-hidden">
+      <img src="me.jpg" alt="Akankshya"class="w-full h-full object-cover" />
+    </div>
+ <div class="text-center md:text-left max-w-md">
+      <h2 class="text-3xl font-bold">
+        Hi! I'm <span class="text-blue-500">Akankshya Rani Panda</span>
+      </h2>
+      <p class="text-black-400 mt-2 font-semibold">Software</p>
+      <p class="mt-4 text-black-300">
+    A curious web devloper and enthusiast coder to connect with real world.
+      </p> 
+      </div>
+      </section>
+       <nav class=" fixed bottom-4 left-4 z-50">
+    <button id="themeToggle" class="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition">
+      Toggle Theme
+    </button>
+  </nav>
+      <button id="scrollTopBtn" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full hidden transition">
+    Top
+  </button>
+
+      
+      <section id="about" class="px-8 py-20 blue-100">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-semibold mb-4">About Me</h2>
+      <p class="text-gray-600 text-lg leading-relaxed">
+        I'm passionate about building vibrant and valuable web experiences. I am quite skillable in front-end development with back-end, and curious to explore about tech tools and frameworks.You’ll also find me indulged into novels and good books.
+      </p>
+     <h3 class="text-2xl mb-4 font-semibold">Click Tracker</h3>
+    <button id="countBtn" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition-all">
+      Click Me
+    </button>
+    <p class="mt-4 text-lg">You've clicked <span id="clickCount" class="font-bold">0</span> times!</p>
+  </div>
+  </section>
+
+      <section id="contact" class="">
+    <div class="max-w-xl mx-auto text-center">
+<h2 class="text-3xl font-semibold mb-4">Get In Touch</h2>
+      <form id="contactForm" class="flex flex-col space-y-4">
+      <input type="text" placeholder="Your Name" required class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        <input type="email" placeholder="Your Email" required class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        <input type="message" placeholder="Your Message" required class="w-full p-5 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+          Submit
+        </button>
+      </form>
+  </section>
+ 
+      
+  
+<footer class="text-center py-6 text-sm text-gray-500 bg-gray-50">
+    © 2025 Akankshya. Built with Tailwind CSS.
+  </footer>
+  <script>
+    
+   const toggleButton = document.getElementById("themeToggle");
+const htmlEl = document.documentElement;
+if (localStorage.getItem("theme") === "dark") {
+htmlEl.classList.add("dark");
+      document.body.classList.remove("bg-white", "text-black");
+document.body.classList.add("bg-black", "text-white");
+    }
+ toggleButton.addEventListener("click", () => {
+ htmlEl.classList.toggle("dark");
+if (htmlEl.classList.contains("dark")) {
+document.body.classList.remove("bg-white", "text-black");
+ document.body.classList.add("bg-black", "text-white");
+ localStorage.setItem("theme", "dark");
+      } else {
+ document.body.classList.remove("bg-black", "text-white");
+ document.body.classList.add("bg-white", "text-black");
+  localStorage.setItem("theme", "light");
+      }
+
+
+    });
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+      scrollTopBtn.style.display = window.scrollY > 200 ? "block" : "none";
+    });
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Click Counter
+    let count = 0;
+    const countBtn = document.getElementById('countBtn');
+    const countDisplay = document.getElementById('clickCount');
+    countBtn.addEventListener('click', () => {
+      count++;
+      countDisplay.textContent = count;
+    });
+    const contactForm = document.getElementById("contactForm");
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("Thank you! Your message has been submitted.");
+      contactForm.reset();
+    });
+  </script>
+
+
+</body>
+</html>
